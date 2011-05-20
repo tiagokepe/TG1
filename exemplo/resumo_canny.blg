@@ -1,0 +1,45 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: resumo_canny.aux
+The style file: plain.bst
+Database file #1: resumo_canny.bib
+You've used 5 entries,
+            2118 wiz_defined-function locations,
+            533 strings with 4903 characters,
+and the built_in function-call counts, 1142 in all, are:
+= -- 110
+> -- 35
+< -- 0
++ -- 16
+- -- 10
+* -- 64
+:= -- 214
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 20
+chr.to.int$ -- 0
+cite$ -- 5
+duplicate$ -- 51
+empty$ -- 97
+format.name$ -- 10
+if$ -- 228
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 5
+newline$ -- 28
+num.names$ -- 10
+pop$ -- 18
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 35
+stack$ -- 0
+substring$ -- 50
+swap$ -- 5
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 0
+while$ -- 11
+width$ -- 6
+write$ -- 53
