@@ -40,47 +40,49 @@ showstringspaces=false
 
 \section{\textbf{Introdução}}
 
-O projeto ProInfoData tem como objetivo monitorar os computadores de todas as escolas
-públicas do Brasil. O monitoramento visa disponibilizar dados para que o MEC e a
-sociedade acompanhem o estado de funcionamento dos computadores. Inicialmente este
-parque computacional foi estimado em 500.000 computadores, atualmente, essa estimativa
-aumentou para mais de 1.000.000 de máquinas, a tendência é que continue crescendo com
-o tempo.
+O projeto ProInfoData tem como objetivo monitorar diariamente os computadores de
+todas as escolas públicas do Brasil. O monitoramento visa disponibilizar dados
+para que o MEC e a sociedade acompanhem o estado de funcionamento dos
+computadores. Inicialmente este parque computacional foi estimado em 500.000
+computadores, atualmente, essa estimativa aumentou para mais de 1.000.000 de
+máquinas, a tendência é que continue crescendo como tempo.
  
-Para atender esta demanda o sistema foi estruturado da seguinte forma: todo computador
-de escola pública brasileira terá um agente (cliente) que diariamente envia informações 
-de uso e de hardware para o servidor central, além das informações do uso de rede que
-foram incluídas recentemente. O servidor tem duas camadas: o WebService que recebe
-informações dos agentes e as armazena no Banco de Dados (BD). Essa arquitetura pode ser
-visualizada a seguir:\newline
+Para atender esta demanda de máquinas o sistema foi estruturado da
+seguinte forma: todo computador de escola pública brasileira terá um agente (cliente)
+que diariamente envia informações de uso e de hardware para o servidor central,
+além das informações do uso de rede que foram incluídas recentemente. O servidor
+tem duas camadas: o WebService que recebe informações dos agentes e as armazena
+no Banco de Dados (BD). Essa arquitetura pode ser visualizada na fugura \ref{arquiteturaBD}
+seguir:\newline
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=200px,height=150px]{img/arq-bd.png}
   \caption{Visão geral da Arquitetura do ProInfoData}
+  \label{arquiteturaBD}
 \end{figure}
 
-Como Sistema de Gerenciamento de Banco de Dados foi escolhido PostgreSQL, um dos 
-motivos dessa escolha é por que o PostgreSQL é um software livre, entretanto,
-para comportar o volume de dados gerado foi necessário desenvolver uma arquitetura de
-armazenamento robusta e escalável. A arquitetura proposta foi baseada em armazém de
-dados Data Warehouse (DW) que é direcionada às operações de leitura, favorecendo a 
-análise de grandes volumes de dados e a geração de relatórios complexos, entraremos em
-mais detalhes no capítulo 2.
+Como Sistema de Gerenciamento de Banco de Dados (SGBD) foi escolhido um SGBD
+relacional, um dos motivos dessa escolha é porque o modelo relacional facilita
+na associação dos dados. Para comportar o volume de dados gerado foi necessário
+desenvolver uma arquitetura de armazenamento robusta e escalável. A arquitetura
+proposta foi baseada em armazém de dados (Data Warehouse - DW) que é direcionada
+às operações de leitura, favorecendo a análise de grandes volumes de dados e a
+geração de relatórios complexos, entraremos em mais detalhes no capítulo 2.
 
 No entanto, com o aumento emergente do número de máquinas e com o acréscimo das
 informações do uso de rede, o volume de dados tornou-se extremamente grande, fato que 
 nos levou a propor um nova solução para o armazenamento dos dados e para realização
-das consultas disponíveis no \href {http://seed.c3sl.ufpr.br/seed/attendance/index.html}
-{portal do projeto}.
+das consultas disponíveis no \footnote {\href {http://seed.c3sl.ufpr.br/seed/attendance/index.html}
+{portal do projeto}}.
 
-Nossa proposta baseia-se em uma tecnologia emergente, chamada MapReduce. Essa solução 
-mostrou-se eficiente em diversas implementações, a mais conhecida é o sistema de 
-armazenamento e busca do Google, ver \cite{MapReduceGoogle} ou
-\href {http://labs.google.com/papers/mapreduce.html} {artigo MapReduce Google}.
+A solução que proposmos baseia-se em uma tecnologia emergente, chamada MapReduce.
+Essa solução mostrou-se eficiente em diversas implementações, a mais conhecida é
+o sistema de armazenamento e busca do Google, ver \cite{MapReduceGoogle} ou
+\footnote{\href {http://labs.google.com/papers/mapreduce.html} {http://labs.google.com/papers/mapreduce.html}}.
 
-Acreditamos que o grande desafio dessa solução será a transformação do modelo baseado 
-em Data Warehouse para um modelo MapReduce.
+Acreditamos que o grande desafio dessa solução será a transformação do modelo
+relacional para um modelo MapReduce.
 
 No capítulo 2 descrevemos com mais detalhes o conceito de Data Warehouse e a arquitetura
 do projeto ProInfoData. No capítulo 3 descrevemos o conceito de MapReduce, as 
@@ -99,17 +101,16 @@ muito maior e incluem análise estatística não expressa facilmente com os
 recursos da SQL que já vimos anteriormente. Essas cosultas normalmente precisam 
 acessar dados vindos de várias origens.”
 
-Um depósito de dados (data warehouse - DW) é um repositório de dados oriundos de
-várias fontes e armazenados sob um banco de dados comum, unificado, e que, nor
-malmente, será mantido por um longo período de tempo, permitindo acesso a dados
-históricos. Diferente dos bancos de dados tradicionais que são transacionais, 
-os DW têm a característica distinta direcionada principalmente ao suporte para 
-tomada de decisões, segundo Navathe\cite{Navathe}. Os dados armazenados no
-depósito são submetidos a análises e agregações complexas, por isso, o data 
-warehouse é um banco de dados direcionado a consultas e análise de dados. Também
-é possível utilizar técnicas para descobrir regras e padrões a partir dos dados,
-facilitando, assim, a tomada de decisão. As informações são de alto nível
-obtidas a partir de dados detalhados armazenados no depósito.
+Um DW é um repositório de dados oriundos de várias origens e armazenados sob um
+banco de dados comum e que, normalmente, será mantido por um longo período de
+tempo, permitindo acesso a dados históricos. Diferente dos bancos de dados
+transacionais, o DW têm a característica distinta direcionada principalmente ao
+suporte para tomada de decisões, segundo Navathe\cite{Navathe}. Os dados armazenados no
+DW são submetidos a análises e agregações complexas, por isso, ele é um banco de
+dados direcionado a consultas e análise de dados. Também é possível utilizar
+técnicas para descobrir regras e padrões a partir dos dados, facilitando, assim,
+a tomada de decisão. As informações são de alto nível obtidas a partir de dados
+detalhados armazenados nele.
 
 A modelagem de dados dos DW é baseada em modelos multidimensionais que 
 aproveitam informações dos dados para visualização em estruturas denominadas
@@ -124,47 +125,45 @@ alterados frequentemente com o tempo, já as tabelas fatos armazenam dados
 voláteis que são alterados constantemente e estão relacionadas as tabelas de
 dimensão.
 
-Nos DW os dados são extraídos de vários bancos de dados e podem estar em 
-esquemas diferentes. É parte da tarefa do Data Warehouse agrupar toda a
-informação em um único esquema.
+No DW os dados são extraídos de vários bancos de dados e podem estar em 
+esquemas diferentes. É parte da tarefa dele agrupar toda a informação em um
+único esquema.
 
-Existem diferentes formas de manter o Data Warehouse atualizado. No modelo mais
+Existem diferentes formas de manter um DW atualizado. No modelo mais
 comum, a coleta de dados é orientada pela fonte, as fontes transmitem os novos 
-dados. Essa transmissão de dados é estipulada para ocorrer de forma contínua 
-para manter o repositório mais atualizado possível em relação as suas diversas 
-fontes. Uma outra forma possível é que a coleta dos dados seja orientada pelo 
-Data Warehouse. Nesse modelo é enviada uma requisição as fontes sempre que seja 
-necessário atualizar a base central. Outra forma é a de reconstrução total da 
-base do Data Warehouse periodicamente. Apesar de ser uma abordagem mais simples,
-ela não é eficiente, pois deve tratar de grandes quantidades de dados todas as
-vezes em que a reconstrução for realizada.
+dados. Segundo Ramakrishnan \cite{Rama} essa transmissão de dados é estipulada para
+ocorrer de forma contínua para manter o repositório mais atualizado possível em
+relação as suas diversas fontes. Uma outra forma possível é que a coleta dos
+dados seja orientada pelo DW. Nesse modelo é enviada uma requisição as fontes
+sempre que seja necessário atualizar a base central. Ramakrishnan \cite{Rama}
+menciona que outra forma é a de reconstrução total da base do DW periodicamente.
+Apesar de ser uma abordagem mais simples, ela não é eficiente, pois deve tratar
+de grandes quantidades de dados todas as vezes em que a reconstrução for realizada.
 
 Vale observar que em nenhuma das abordagens a base central de dados estará 
 sempre atualizada em relação as todas as suas fontes. Uma forma de contornar esse
 problema é a atualização em duas fases, onde as modificações feitas nas bases 
-são então replicadas no Data Warehouse. Mas essa abordagem torna todo o processo
-muito caro em termos computacionais.
+são então replicadas no DW. Mas essa abordagem torna todo o processo
+muito caro em termos computacionais, segundo Ramakrishnan \cite{Rama}.
 
 Em geral essa pequena desatualização não significa um problema para os sistemas
 de suporte a decisão.
 
-\subsection{\textbf{Data Mining}}
+\subsection{\textbf{Data Mart}}
 
-Data mining é uma técnica que tornou-se muito popular nos últimos anos, consiste
-no processo de extrair informações válidas, ou melhor, permite inferir e explorar
-conhecimento a partir dos dados armazenados. Em conjunto com o DW compõe uma
-funcionalidade crucial para tomada de decisões estratégicas.
- 
-Segundo Navathe \cite{Navathe}, “Para fazer a data mining mais eficiente, o data
-warehouse deve ter uma coleção de dados agregados ou sumarizados”. Nesse ponto
-entra o conceito de Data Mart (DM), consiste em criar dentro do DW um conjunto
-de dados agregados ou sumarizados com diversos objetivos, mas principalmente em
+Data Mart (DM) é um subconjunto de dados do DW. O conjunto de DM agrupa dados
+específicos de um determinado assunto ou sumariza os dados para uma determinada
+finalidade, ou seja, consiste em criar dentro do DW um conjunto de dados
+agregados ou sumarizados com diversos objetivos, mas principalmente em
 facilitar a mineração de dados, focando na agregação para melhorar o desempenho
 das consultas mais comuns ou frequentes.
 
+Segundo Navathe \cite{Navathe}, para fazer a análise de dados mais eficiente,
+o DW deve ter uma coleção de dados agregados ou sumarizados. 
+
 No ProInfoData foram definidos gráficos e relatórios para o MEC e a sociedade
-consultarem no portal do projeto, com base nessas consultas foram criados data
-marts específicos para atender essa demanda, como veremos a seguir.
+consultarem no portal do projeto, com base nessas consultas foram criados DMs
+específicos para atender essa demanda, como veremos a seguir.
 
 \subsection{\textbf{Arquiterura do Banco de Dados no ProInfoData}}
 
@@ -183,21 +182,18 @@ então são retirados da staging area. Com os dados armazenados no DW, eles,
 finalmente, são sumarizados e agregados no conjundo de DM que foi projetado para
 otimizar as consultas.
 
-No DW existem dois tipos de tabelas de armazenamento: as tabelas de dimensão e as
-tabelas fatos, as principais tabelas de dimensão são: tabela de cadastro de
-dados das escolas, a tabela de cadastro da máquina associada a escola
-correspondente, a tabela de catálogo de hardware e a tabela de data. As
-principais tabelas fatos são: a tabela de armazenamento de disponibilidade das
-máquinas, tabela de inventário de hardware e tabela de uso de rede.
+O DW do ProInfoData é composto por tabelas de dimensão que armazenam dados com
+pouca atualização, foram criadas para armazenar informações das escolas, máquinas
+e catálogo de hardware. Também é composto por tabelas fatos que são atualizadas
+diariamente, essas tabelas armazenam informações de disponibilidade, inventário
+de hardware e consumo de banda de rede.
 
-O conjunto de DM é formado por quatro Data Mart: o DM para classificar a
-disponibilidade das máquinas em verde (último contato a menos de 11 dias),
-amarelo (último contato entre 11 e 30 dias) e vermelho (último contato com mais
-de 31 dias). Outro DM agrupa por escola a disponibilidade das máquinas. Existe
-outro para agregar informações de hardware e outro para detectar alteração de
-hardware.\\
+O conjunto de DM é formado por quatro Data Marts: um DM para classificar a
+disponibilidade das máquinas por cores. Outro DM agrupa por escola a
+disponibilidade das máquinas. Existe outro para agregar informações de hardware
+e um para detectar alteração de hardware.
 
-\textbf{Talvez inserir uma imagem da arquitetura do BD????}\\
+%\textbf{Talvez inserir uma imagem da arquitetura do BD????}\\
 
 Cada componente descrito têm sua complexidade de arquitetura, carregamento e
 armazenamento. Por isso, em todos esses componentes foram realizados testes de
@@ -220,18 +216,16 @@ o número de consultas é relativamente menor e consequentemente o impacto no BD
 menor. Além disso, os dados tem um delay de um dia, ou seja, os dados no DW são
 sempre atualizados do dia anterior e não do dia atual. 
 
-O carregamento é realizado por funções de carregamento executadas no postgreSQL,
-são procedures (store de carregamento) que realizam as junções, sumarizações e
-agregações necessárias. Essa etapa não entrou nos testes porque depende dos dados
-já inseridos no BD, como a cada dia são inseridos mais dados, o carregamento
-tende a demorar mais e, assim, aumenta gradualmente o tempo de execução conforme
- cresce o volume de dados.
+O carregamento é realizado por funções de carregamento executadas no SGBD,
+realizam as junções, sumarizações e agregações necessárias. Essa etapa não
+entrou nos testes porque depende dos dados já inseridos no BD, como a cada dia
+são inseridos mais dados, o carregamento tende a demorar mais e, assim, aumenta
+gradualmente o tempo de execução conforme cresce o volume de dados.
 
-Não é difícil de perceber que o carregamento um dia demorará mais de oito horas
-para finalizar, ocasionando impacto negativo nas consultas do BD, pois enquanto
-ele é carregado as tabelas são bloqueadas (lock realizado pelo SGBD) pelo
-postgreSQL, esse mecanismo é implementado no kernel do SGBD para que as
-consultas não retornem informações desatualizadas.
+O desempenho das funções de carregamento depende da quantidade de dados armazenados
+no BD, o volume de dados cresce diariamente, por isso, não é difícil de perceber
+que o carregamento chegará ao ponto de demorar mais de oito horas para finalizar,
+ocasionando maior demora na realização de consultas no BD.
 
 Por isso, torna-se necessário usar novas tecnologias para resolver esse tipo
 problema.
@@ -239,10 +233,10 @@ problema.
 
 \section{\textbf{MapReduce}}
 
-MapReduce é um framework criado para permite que a tarefa de analisar uma grande
-quantidade de dados possa ser dividida e designada a um conjunto de máquinas,
-denomindo cluster de computadores, afim de tirar proveito da performance obtida
-pelo paralelismo, omitindo-se toda a complexidade para tornar a execução em
+MapReduce é um framework criado para analisar uma grande quantidade de dados, 
+os dados são divididos e designados a um conjunto de máquinas, denominado
+cluster de computadores, afim de tirar proveito da performance obtida
+pelo paralelismo, omitindo toda a complexidade para tornar a execução em
 paralelo possível, de modo que o usuário foque no problema principal, que é o
 processamento dos dados.
 
@@ -257,13 +251,14 @@ dessa fase inicia-se a fase de redução. Nessa segunda fase a máquina master
 notificará as máquinas que desempenham a atividade de redução sobre a
 localização dos dados produzidos pela fase anterior, para que os dados sejam
 condensados em informações úteis para que possam ser interpretados e utilizados
-para o fim necessário.
+para o fim necessário. Podemos ver a execução na figura \ref{MapReduce}.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=400px,height=400px]{img/mapreduce.png}
   \caption{Visão geral da execução do framework MapReduce\newline
   Fonte: MapReduce: Simplified Data Processing on Large Clusters (2004, p. 3)}
+  \label{MapReduce}
 \end{figure}
 
 Cada uma dessas fases, a de mapeamento e redução, implementa uma função, Map e 
@@ -271,11 +266,9 @@ Reduce respectivamente, ambas funções são implementadas pelo usuário.
 
 A função Map recebe como entrada um par chave-valor. Com o par serão realizadas
 as operações definidas (operações de Map e Reduce), e será produzido como saída
-uma lista de pares chave-valor intermediárias. No término dessa fase, isto é,
-cada função Map designada terminou sua execução, será então obtida a lista
-completa de chave-valor intermediárias. Com a conclusão dessa fase o framework
-agrupará todos os valores associados a mesma chave, partindo para a próxima fase,
-que utiliza a função Reduce.
+uma lista de pares chave-valor intermediárias. Com a conclusão dessa fase o
+framework agrupará todos os valores associados a mesma chave, partindo para a
+próxima fase, que utiliza a função Reduce.
 
 A função Reduce recebe como entrada o par chave-lista de valores associada a
 chave. O objetivo dessa função é realizar tarefas para agrupar ainda mais os
@@ -287,12 +280,11 @@ Reduce, visando uma melhor performance na utilização do modelo.
 
 \subsection{\textbf{Hadoop}}
 
-Hadoop é um framework que permite o processamento de dados em larga escala em
-clusters de computadores. Oferece um mecanismo de distribuição dos dados em um
-Sistema de Arquivo Distribuído (Hadoop Distributed File System - HDFS). Também
-oferece uma interface para implementar as funções de Map e Reduce o que facilita
-a programação e proporciona um sistema de armazenamento simples em conjunto com
-o Hive.
+Hadoop \cite{hadoop} é um framework que permite o processamento de dados em
+larga escala em clusters de computadores. Oferece um mecanismo de distribuição
+dos dados em um Sistema de Arquivo Distribuído (Hadoop Distributed File System - HDFS)
+ver \cite{hdfs}. Também oferece uma interface para implementar as funções de Map e 
+Reduce o que facilita a programação.
 
 As premissas do MapReduce consiste na simplificação do armazenamento, comparada
 as estruturas de armazenamento do SGBD, o armazenamento utilizado deve ser
@@ -309,18 +301,29 @@ Preocupações com falhas de hosts no meio de processamento de tarefas são
 desconsideradas. Todos os problemas de distribuição ficam a cargo do framework.
 
 \subsection{\textbf{Hive}}
-Hive é uma infra-estrutura de data warehouse construída em cima do Hadoop. 
+Hive \cite{hive} é uma infra-estrutura de data warehouse construída em cima do
+Hadoop. 
 
 Ele suporta convenientemente a análise de grandes conjuntos de dados armazenados
 em sistemas de arquivos compatíveis com o Hadoop,  como exemplo o sistema de
-arquivos  da Amazon S3. Ele fornece uma linguagem SQL-like chamado HiveQL
+arquivos  da Amazon S3 \cite{amazon}. Ele fornece uma linguagem SQL-like chamado HiveQL
 mantendo total apoio para o MapReduce. Para acelerar consultas, fornece índices
-como o índice de bitmap.
+como o índice de bitmap. Um exemplo de arquitetura com o Hive é do facebook
+conforme a figura \ref{hive}.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=300px,height=200px]{img/hive2.png}
+  \caption{Facebook Data Infrastructure\newline
+  Fonte: http://nosql.mypopescu.com/post/681603154/presentation-hive-a-petabyte-scale-data-warehouse}
+  \label{hive}
+\end{figure}
  
 Atualmente, existem três formatos de arquivos suportados no Hive, que são
 textfile, SEQUENCEFILE e RCFILE.
 
-\section{\textbf{Proposta de transformação de Data Warehouse em um modelo MapReduce}}
+
+\section{\textbf{Proposta de transformação de Data Warehouse em um modelo chave/valor}}
 
 Uma abordagem possível para nossa solução seria baseada em ATL (model
 transformation technology), consiste em realizar transformações usando modelos,

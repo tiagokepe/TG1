@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.18)  27 JUN 2011 23:51
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.8.18)  28 JUN 2011 19:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -569,52 +569,45 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 50--56
+Underfull \hbox (badness 10000) in paragraph at lines 50--57
 
  []
 
-<img/arq-bd.png, id=39, 376.607pt x 244.915pt>
+<img/arq-bd.png, id=40, 376.607pt x 244.915pt>
 File: img/arq-bd.png Graphic file (type png)
  <use img/arq-bd.png> [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./img/arq-bd.png>] [2] [3]
-
-Underfull \hbox (badness 10000) in paragraph at lines 193--199
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 200--201
-
- []
-
-[4] <img/mapreduce.png, id=72, 755.82375pt x 474.77374pt>
+ [4]
+<img/mapreduce.png, id=85, 755.82375pt x 474.77374pt>
 File: img/mapreduce.png Graphic file (type png)
-
-<use img/mapreduce.png>
-Overfull \hbox (31.60994pt too wide) in paragraph at lines 264--266
+ <use img/mapreduce.png>
+Overfull \hbox (31.60994pt too wide) in paragraph at lines 258--260
  [][] 
  []
 
 [5] [6 <./img/mapreduce.png (PNG copy)>]
-Overfull \hbox (8.06857pt too wide) in paragraph at lines 325--329
+<img/hive2.png, id=102, 501.875pt x 372.39125pt>
+File: img/hive2.png Graphic file (type png)
+ <use img/hive2.png>
+Overfull \hbox (8.06857pt too wide) in paragraph at lines 328--332
 \OT1/cmr/m/n/12 del trans-for-ma-tion te-ch-no-logy), con-siste em re-a-li-zar 
 trans-forma^^Xc~oes usando
  []
 
-[7]
-Overfull \hbox (5.45749pt too wide) in paragraph at lines 356--360
+[7 <./img/hive2.png>]
+Overfull \hbox (5.45749pt too wide) in paragraph at lines 359--363
 \OT1/cmr/m/n/12 mectb03-data-dim, mectb04-maquina-dim e mectb05-disponibilidade
 -fact,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 356--360
+Underfull \hbox (badness 10000) in paragraph at lines 359--363
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 361--362
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
 
  []
 
@@ -622,7 +615,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 361--362
 File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 404.
+nput line 407.
 
 (./Availability.java
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1.
@@ -640,30 +633,53 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 23.
- [9] [10]) [11] (./tg.bbl)
-[12] (./tg.aux) ) 
+ [9] [10] [11]) (./tg.bbl
+Overfull \hbox (34.5234pt too wide) in paragraph at lines 16--20
+[]\OT1/cmr/m/n/12 hadoop.apache.org.  Ama-zon s3.  http://wiki.apache.org/hadoo
+p/AmazonS3,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--32
+[]\OT1/cmr/m/n/12 hadoop.apache.org.  Ha-doop dis-tri-bu-ted file sys-tem.
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 34--40
+[]\OT1/cmr/m/n/12 hadoop.apache.org.  What is apa-che hive.
+ []
+
+
+Overfull \hbox (244.0037pt too wide) in paragraph at lines 34--40
+\OT1/cmr/m/n/12 https://cwiki.apache.org/confluence/display/Hive/Home%3bjsessio
+nid=4B4A95CA588FF5540B70DA5D745AE0B8,
+ []
+
+) [13] (./tg.aux) ) 
 Here is how much of TeX's memory you used:
- 7465 strings out of 493911
- 102842 string characters out of 1155272
- 436044 words of memory out of 3000000
- 10411 multiletter control sequences out of 15000+50000
+ 7487 strings out of 493911
+ 103074 string characters out of 1155272
+ 440118 words of memory out of 3000000
+ 10423 multiletter control sequences out of 15000+50000
  15311 words of font info for 63 fonts, out of 3000000 for 9000
  706 hyphenation exceptions out of 8191
- 38i,6n,43p,276b,1943s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx1
-0.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
-/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
-are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on tg.pdf (12 pages, 311508 bytes).
+ 38i,8n,43p,276b,1913s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmb
+x10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
+nts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmti8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmtt10.pfb>
+Output written on tg.pdf (13 pages, 408074 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 180 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 384 PDF objects out of 1000 (max. 8388607)
+ 189 named destinations out of 1000 (max. 500000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 
