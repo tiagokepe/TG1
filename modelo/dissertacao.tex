@@ -1,0 +1,109 @@
+\documentclass[12pt,a4paper]{ufpr}
+
+% \usepackage[portuges,brazil]{babel}
+% \usepackage[portuguese,brazil]{babel}
+
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amssymb,amsmath}
+\usepackage{epsfig}
+\usepackage{multirow}
+
+
+
+\usepackage{isolatin1}
+\usepackage{amssymb}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{caption2}
+\usepackage{setspace}
+\usepackage{ps-macros}
+% \usepackage{psfig}
+
+\setcounter{secnumdepth}{3}    % n - numero de niveis de subsubsection numeradas
+\setcounter{tocdepth}{3}       % coloca ate o nivel n no sumario
+
+\title{Transformações de Data Warehouse para MapReduce no projeto ProInfoData}
+\author{Tiago Rodrigo Kepe e Felipe Bolsi}
+\advisortitle{Orientador} % ou Orientador
+\advisorname{Profa. Dr. Eduardo Almeida}
+\advisorplace{Departamento de Informática, UFPR}  % departamento, instituicao
+\city{Curitiba}
+\year{2011}
+
+\banca        % nao insira o nome do orientador, ja eh feito automaticamente
+{Prof. Dr. Educardo Almeida}{Departamento de Informática, UFPR} % se nao houver deixe em branco {}{}
+{}{}    % se houver um quarto membro na banca, inserir nome e instituicao
+
+\defesa{} % dia em que foi realizada a defesa da dissertacao
+
+
+\begin{document}
+
+%\makecapaproposta             % cria capa para proposta%
+\makecapadissertacao           % cria capa para dissertacao de mestrado %
+\makerosto                     % cria folha de rosto para versao final da UFPR %
+%\maketermo                     % cria folha com o termo de aprovacao da dissertacao%
+
+%\singlespacing           % espacamento 1 - capa UFPR%
+%\onehalfspacing          % espacamento 1/2 %
+\doublespacing            % espacamento 2 - UFPR %
+
+\pagestyle{headings}
+\pagenumbering{roman}
+
+%\chapter*{Agradecimentos}
+%\input{agradecimentos.tex}          % possiu somente o texto
+
+\tableofcontents
+
+%\listoffigures         % se houver mais do que 3 figuras
+%\addcontentsline{toc}{chapter}{\MakeUppercase{Lista de Figuras}}
+%\newpage
+
+%\listoftables        % se houver mais do que 3 tabelas
+%\addcontentsline{toc}{chapter}{\MakeUppercase{Lista de Tabelas}}
+%\newpage
+
+\chapter*{Resumo}
+\addcontentsline{toc}{chapter}{\MakeUppercase{Resumo}}
+\input{resumo.tex}           % somente o texto
+\newpage
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{\MakeUppercase{Abstract}}
+\input{abstract.tex}        % somente o texto
+\newpage
+
+
+\pagenumbering{arabic}
+
+\input{capitulo1.tex}
+%\input{capitulo2.tex}
+%\input{capitulo3.tex}
+%\input{capitulo4.tex}
+%\input{capitulo5.tex}
+%\input{capitulo6.tex}
+%\input{anexo1.tex}     % se houver anexo
+
+
+
+\bibliographystyle{brazil}
+\bibliography{luciano}
+% utilize macros (3 primeiras letras do mes em ingles, minusculas) no seu
+% .bib para atribuir o nome do mes em portugues nas referencia,
+% se o style for brazil, outros estilos tambem aceitam estas macros
+% Ex:
+%
+% @InProceedings{teste,
+%   author =       {Luciano}
+%   year =         {2000}
+%   month =        {}#sep;
+% }
+%
+\addcontentsline{toc}{chapter}{\MakeUppercase{Bibliografia}}
+
+\singlespacing
+\makecapadissertacao
+
+\end{document}

@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{MapReduceGoogle}
+{Dean, J. and Ghemawat, S.}
+\newblock Mapreduce: Simplified data processing on large clusters.
+\newblock {\em Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, PAMI-8(6):679 --698, nov. 1986.
+
+\bibitem{Didonet}
+Marcos D.~D. Fabro.
+\newblock {\em Metadata management using model weaving and model
+  transformations}.
+\newblock PhD thesis, University of Nantes, September 2007.
+
+\bibitem{Navathe}
+S.~B. Navathe and Elmasri R.
+\newblock {\em Sistema de Banco de Dados. 4ª ed.}
+\newblock São Paulo: Person Addison Wesley, 2005.
+
+\bibitem{Silber}
+{Silberschatz, A. and Korth, H. and Sudarshan, S.}
+\newblock {\em Sistema de Banco de Dados. 2ª ed.}
+\newblock São Paulo: Makron Books, 1999.
+
+\end{thebibliography}
