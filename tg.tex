@@ -233,12 +233,11 @@ problema.
 
 \section{\textbf{MapReduce}}
 
-MapReduce é um framework criado para analisar uma grande quantidade de dados, 
-os dados são divididos e designados a um conjunto de máquinas, denominado
-cluster de computadores, afim de tirar proveito da performance obtida
-pelo paralelismo, omitindo toda a complexidade para tornar a execução em
-paralelo possível, de modo que o usuário foque no problema principal, que é o
-processamento dos dados.
+MapReduce é um framework criado para analisar uma grande quantidade de dados. Os
+dados são divididos e designados a um conjunto de máquinas, denominado
+cluster de computadores. Tem por objetivo melhorar o desempenho na performance
+obtida pelo paralelismo, omitindo toda a complexidade de modo que o usuário
+foque no problema principal, que é o processamento dos dados.
 
 O modelo MapReduce é composto por duas fases, a de mapeamento dos dados e
 redução. Para execução dessas fases o framework designa uma das
@@ -323,7 +322,8 @@ Atualmente, existem três formatos de arquivos suportados no Hive, que são
 textfile, SEQUENCEFILE e RCFILE.
 
 
-\section{\textbf{Proposta de transformação de Data Warehouse em um modelo chave/valor}}
+\section{\textbf{Proposta de transformação de Data Warehouse em um modelo 
+            de armazenamento chave-valor}}
 
 Uma abordagem possível para nossa solução seria baseada em ATL (model
 transformation technology), consiste em realizar transformações usando modelos,
@@ -356,10 +356,12 @@ Então uma ou mais tabelas corresponderiam a um arquivo de texto, suas linhas a
 concatenação das tuplas associadas às tabelas e os campos do arquivo
 corresponderiam a atributos das tabelas.
 
-Um exemplo seria a transformação das tabelas: mectb01-escola-dim,
-mectb03-data-dim, mectb04-maquina-dim e mectb05-disponibilidade-fact, em um
-único arquivo chamado de “arq-disponibilidade”, cada linha deste arquivo teria
-os campos:\\
+Um arquivo de armazenamento teria os campos correspondendo as colunas de
+algumas tabelas do BD do ProInfoData. Como exemplo o arquivo denominado
+"arq-disponibilidade", ele tem os campos: \textbf{Mac-Address} identificador
+da máquina, \textbf{INEP} código identificador da escola, \textbf{Nome da Escola},
+\textbf{Cidade}, \textbf{Estado}, \textbf{Região} e \textbf{Data de contato} dia em
+que a máquina se comunicou, conforme abaixo:
 
 \textbf{MAC-ADDRESS, INEP, NOME-ESCOLA, CIDADE, ESTADO, REGIÃO, DATA-CONTATO}\\
 
@@ -369,8 +371,8 @@ arquivos de armazenamento permanente a partir do arquivo da staging area. Na
 verdade teria que ser estudado melhor a própria existência do arquivo de
 armazenamento temporário, pois outra solução seria inserir os novos dados vindos
 do servidor WebService diretamente nos arquivos de armazenamento, com isso
-evitaria a manutenção do arquivo temporário. Essa abordagem seria mais
-consistente com o ATL, pois se houvesse algum incremento ou alteração na
+evitaria a manutenção do arquivo temporário. Essa abordagem tornaria o processo
+mais automatizado, pois se houvesse algum incremento ou alteração na
 estrutura do arquivo temporário, essa modificação impactaria nas rotinas de
 atualização que precisariam ser adaptadas.
  
@@ -388,9 +390,9 @@ objetivo inerente do mapeamento é descrever o modelo dos dados, consequentement
 essa tarefa será de responsabilidade do programador quando escrever as funções
 de Map.
 
-Outra etapa importante é a agregação e sumarização dos dados nos Data Marts,
+Outra etapa importante é a agregação e sumarização dos dados no conjunto de DM,
 essa etapa é uma das mais cruciais, pois impacta diretamente no desempenho do
-Data Warehouse, ela corresponde as funções de Reduce, pois no Reduce podemos
+DW, ela corresponde as funções de Reduce, pois no Reduce podemos
 agregar vários Maps, ou seja, as entradas dos arquivos de armazenamento são
 mapeadas e repassadas ao Reduce para manipular os resultados. Desta forma os DM
 não existiriam mais, o programador assume toda responsabilidade ao escrever as
@@ -406,9 +408,8 @@ Um código protótipo de uma função MapReduce usando o arquivo
 
 \lstinputlisting[language=java, label=teste, caption={Disponibilidade por região}]{Availability.java}
 
-Este código implmenta uma função Map e uma função Reduce. O Map recebe com entrada
-o arq-disponibilidade que contem os campos: \textbf{Mac-Address, Inep(identificador
-da escola, nome da escola, cidade, estado, região, data de contato}, gera uma saída
+Este código implementa uma função Map e uma função Reduce. O Map recebe como entrada
+o arq-disponibilidade, onde a linha é chave e seu conteúdo o valor, gera uma saída
 intermediária para o Reduce com os campo data(chave) e região(valor). O Reduce,
 por sua vez, agrega a disponibilidade por regiões do Brasil, e gera como saída
 o par data(chave) e região seguida pelo quantidade de máquinas(valor).
@@ -417,20 +418,22 @@ Nota-se na linha 138 foi definida esplicitamente a quantidade de Reduce, nesse c
 somente uma máquina realizará todo o processo, pois foi implementado para um ambiente
 de teste inicial.
 
-\section{\textbf{Conclusão}}
+\section{\textbf{Discussão}}
 Pode-se notar que a implementação das funções Map e Reduce é bastante simples,
 permitindo que o programador se atenha apenas a geração dos dados, sem preocupar-se
 com a comunicação entre nós.
 
-A transformação mostrou-se simplória, pois é necessário apenas associar elementos
+A simplicidade na codificação MapReduce e no armazenamento do Hadoop torna a
+transformação mais fácil, pois é necessário apenas associar elementos
 dos dois modelos, no nosso caso ocorrerão as seguintes transformações: tabelas serão
 mapeadas em arquivos, tuplas corresponderão a linha dos arquivos, os atributos a 
 campos dos arquivos, as funções de carregamento corresponderão as funções Map, as 
 funções de agregação (carregamento dos DMs) funções Reduce e as consultas serão
 realizadas pelo Hive.
 
-Um ponto importante ainda a ser estudado, são as consultas feitas pelo Hive, mas
-essa parte focaremos na continuação desse trabalho. 
+Pontos importantes ainda a sererem estudados, são as consultas feitas pelo Hive
+e a migração dos dados da base do ProInfoData, mas essa parte focaremos na
+continuação desse trabalho. 
 
 \bibliographystyle{plain}
 \bibliography{tg}
