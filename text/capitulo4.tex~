@@ -1,0 +1,95 @@
+\chapter{\textbf{Proposta de migração de Data Warehouse para um modelo 
+            de armazenamento chave-valor}}
+
+Uma abordagem possível para nossa solução seria baseada em ATL \cite{atl} (model
+transformation technology), que consiste em realizar transformações usando modelos.
+Essa abordagem facilita a automatização do processo de transformação, além de
+ter suporte de ferramentas e APIs.
+
+Para realizar transformações entre modelos é necessário criar correspondência
+entre elementos de um modelo com elementos do outro modelo, segundo Didonet \cite{Didonet}.
+Essa correspondência é realizada através de regras de associação. Em nosso
+ambiente é necessário associar as tabelas, atributos, associações, funções de
+carregamento e demais componentes da arquitetura do BD do ProInfoData, a
+elementos correspondentes no modelo do Hadoop, Hive e MapReduce.
+
+No BD do ProInfoData existem tabelas de dimensão e tabelas fatos, inicialmente
+temos que criar regras de transformação para associar as tabelas essências do
+DW ao modelo de armazenamento do hadoop.
+
+Um dos formatos que o hadoop suporta é o arquivo de texto, transformaremos as
+tabelas fatos e tabelas de dimensão em um arquivo, onde um tupla corresponde a
+uma linha e cada atributo das tabelas corresponderia a um campo do arquivo. Uma
+possível dificuldade seria representar as associações entre as tabelas fatos e
+as tabelas de dimensão. No DW essa associação ocorre com chaves primárias e
+estrangeiras. Para resolver esse problema teremos que inserir no arquivo todos
+os atributos das tabelas associadas, e esta abordagem pode impactar diretamente no
+tamanho do arquivo, mas esse problema não é preocupante, uma vez que o MapReduce
+foi projetado para suportar grande volume de dados, na faixa de terabytes e até
+pentabytes.
+
+Então uma ou mais tabelas corresponderiam a um arquivo de texto, suas linhas a
+concatenação das tuplas associadas às tabelas e os campos do arquivo
+corresponderiam a atributos das tabelas.
+
+Um arquivo de armazenamento teria os campos correspondendo as colunas de
+algumas tabelas do BD do ProInfoData. Como exemplo o arquivo denominado
+"arq-disponibilidade", ele tem os campos: \textbf{Mac-Address} identificador
+da máquina, \textbf{INEP} código identificador da escola, \textbf{Nome da Escola},
+\textbf{Cidade}, \textbf{Estado}, \textbf{Região} e \textbf{Data de contato} dia em
+que a máquina se comunicou, conforme abaixo:
+
+\textbf{MAC-ADDRESS, INEP, NOME-ESCOLA, CIDADE, ESTADO, REGIÃO, DATA-CONTATO}\\
+
+A staging area seria transformada em um arquivo, pois é uma tabela simples de
+armazenamento temporário. Poderiam ser criadas rotinas de atualização dos
+arquivos de armazenamento permanente a partir do arquivo da staging area. Na
+verdade teria que ser estudado melhor a própria existência do arquivo de
+armazenamento temporário, pois outra solução seria inserir os novos dados vindos
+do servidor WebService diretamente nos arquivos de armazenamento, e com isso
+evitaria a manutenção do arquivo temporário. Essa abordagem tornaria o processo
+mais automatizado, pois se houvesse algum incremento ou alteração na
+estrutura do arquivo temporário, essa modificação impactaria nas rotinas de
+atualização que precisariam ser adaptadas.
+ 
+Essa última abordagem sem o armazenamento temporário eliminaria a etapa de
+carregamento dos dados, contudo teria que ser avaliado o desempenho de inserções
+nos arquivos de armazenamento, mesmo se existir o arquivo temporário também será
+necessário testar o desempenho de inserções nele.
+
+O carregamento do DW tem como tarefa principalmente a classificação dos dados.
+Ele realiza o catálogo de hardware, associa as máquinas as sua escola
+correspondente e também associa a disponibilidade com a data de contato, além de
+detectar alteração de hardware. Essa etapa corresponde a função Map, ou
+seja, o mapeamento dos dados é responsável por essas classificações, já que o
+objetivo inerente do mapeamento é descrever o modelo dos dados, consequentemente
+essa tarefa será de responsabilidade do programador quando escrever a função
+de Map.
+
+Outra etapa importante é a agregação e sumarização dos dados no conjunto de DM,
+essa etapa é uma das mais cruciais, pois impacta diretamente no desempenho do
+DW. Ela corresponde as funções de Reduce, pois no Reduce podemos
+agregar vários Maps, ou seja, as entradas dos arquivos de armazenamento são
+mapeadas e repassadas ao Reduce para manipular os resultados. Desta forma os DM
+não existiriam mais, e o programador assume toda responsabilidade ao escrever as
+funções de Reduce conforme a necessidade das consultas.
+
+As consultas são de responsabilidade do Hive que oferece uma interface para
+recuperação dos dados. Esse é um ponto de extrema importância, pois o Hive não
+implementa todas as funções SQL, dependendo da consulta o programador terá que
+escrevê-la manualmente.
+
+Um código protótipo de uma funções Map e Reduce utilizando o arquivo
+“arq-disponibilidade” seria:
+
+\lstinputlisting[language=java, label=teste, caption={Disponibilidade por região}]{Availability.java}
+
+Este código implementa uma função Map e uma função Reduce. O Map recebe como entrada
+o arq-disponibilidade, onde a linha é chave e seu conteúdo o valor, gerando uma saída
+intermediária para o Reduce com os campo data(chave) e região(valor). O Reduce,
+por sua vez, agrega a disponibilidade por regiões do Brasil, e gera como saída
+o par data(chave) e região seguida pelo quantidade de máquinas(valor).
+
+Nota-se na linha 126 foi definida explicitamente a quantidade de funções Reduce, nesse caso
+somente uma máquina realizará todo o processo, pois foi implementado para um ambiente
+de teste inicial.

@@ -1,0 +1,66 @@
+\begin{thebibliography}{10}
+
+\bibitem{MapReduceGoogle}
+{Dean, J. and Ghemawat, S.}
+\newblock Mapreduce: Simplified data processing on large clusters.
+\newblock {\em Pattern Analysis and Machine Intelligence, IEEE Transactions
+  on}, PAMI-8(6):679--698, nov. 1986.
+
+\bibitem{atl}
+eclipse.org/atl/ eclipse.org/atl/.
+\newblock Atl - a model transformation technology, 2011.
+\newblock Acessado em 30 de Junho de 2011.
+
+\bibitem{Didonet}
+Marcos D.~D. Fabro.
+\newblock {\em Metadata management using model weaving and model
+  transformations}.
+\newblock PhD thesis, University of Nantes, September 2007.
+
+\bibitem{Molina}
+Hector GARCIA-MOLINA et~al.
+\newblock {\em Data Base Systems The Complete Book}.
+\newblock Prentice Hall, 2. ed edition, 2008.
+
+\bibitem{amazon}
+hadoop.apache.org~hadoop.apache.org {hadoop.apache.org hadoop.apache.org}.
+\newblock Amazon s3.
+\newblock Site refer{\^e}ncia: http://wiki.apache.org/hadoop/AmazonS3, 2011.
+\newblock Acessado em 28 de Junho de 2011.
+
+\bibitem{hadoop}
+hadoop.apache.org~hadoop.apache.org {hadoop.apache.org hadoop.apache.org}.
+\newblock Apache hadoop.
+\newblock Site refer{\^e}ncia: http://hadoop.apache.org/, 2011.
+\newblock Acessado em 28 de Junho de 2011.
+
+\bibitem{hdfs}
+hadoop.apache.org~hadoop.apache.org {hadoop.apache.org hadoop.apache.org}.
+\newblock Hadoop distributed file system.
+\newblock Site refer{\^e}ncia: http://hadoop.apache.org/hdfs/, 2011.
+\newblock Acessado em 28 de Junho de 2011.
+
+\bibitem{hive}
+hadoop.apache.org~hadoop.apache.org {hadoop.apache.org hadoop.apache.org}.
+\newblock What is apache hive.
+\newblock Site refer{\^e}ncia:
+  https://cwiki.apache.org/confluence/display/Hive/Home\%3bjsessionid=4B4A95CA%
+588FF5540B70DA5D745AE0B8, 2011.
+\newblock Acessado em 28 de Junho de 2011.
+
+\bibitem{Navathe}
+S.~B. Navathe and Elmasri R.
+\newblock {\em Sistema de Banco de Dados. 4ª ed.}
+\newblock S{\~a}o Paulo: Person Addison Wesley, 2005.
+
+\bibitem{Rama}
+R.~Ramakrishnan and Gehrke J.
+\newblock {\em Sistemas de Gerenciamento de Banco de Dados}.
+\newblock Ed. McGraw-Hill, 2007.
+
+\bibitem{Silber}
+{Silberschatz, A. and Korth, H. and Sudarshan, S.}
+\newblock {\em Sistema de Banco de Dados. 2ª ed.}
+\newblock S{\~a}o Paulo: Makron Books, 1999.
+
+\end{thebibliography}

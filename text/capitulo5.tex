@@ -1,0 +1,16 @@
+\chapter{\textbf{Discussão}}
+
+Pode-se notar que a implementação das funções Map e Reduce é bastante
+simples, permitindo que o programador se atenha apenas a geração dos
+dados, sem preocupar-se com a comunicação entre os nós.
+
+A simplicidade na codificação MapReduce e no armazenamento do
+Hadoop, torna a transformação mais fácil, pois é necessário apenas associar elementos dos dois modelos.
+No nosso caso ocorrerão as seguintes transformações: 
+tabelas serão mapeadas em arquivos, tuplas corresponderão a linhas dos arquvos, os atributos a campos dos arquivos, 
+as funções de carregamento corresponderão as funções Map, as funções de agregação
+(carregamento dos DMs) funções Reduce, e as consultas serão realizadas pelo Hive.
+
+Pontos importantes ainda a sererem estudados são as consultas feitas
+pelo Hive, e a migração dos dados da base do ProInfoData. Mas essa parte
+será focada na continuação desse trabalho.

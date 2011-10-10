@@ -1,0 +1,14 @@
+via Kile
+1 - executar PDFLaTeX sobre arquivo dissertacao.tex (texto sem bibliografia)
+2 - executar BibTeX sobre arquivo dissertacao.tex (há a necessidade do arquivo dissertacao.aux, por isso passo 1)
+3 - executar novamente PDFLaTeX sobre arquivo dissertacao.tex (agora texto será gerado com a bibliografia)
+
+Arquivos Necessários:
+- brazil.bst
+- dissertacao.tex
+- ps-macros.sty
+- tg.bib
+- ufpr.cls
+
+Os arquivos contidos nos diretórios img e text correspondem ao conteúdo do texto. Já os outros arquivos, contidos no
+diretório TG1, correspondem as suas regras para compilação.

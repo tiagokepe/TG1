@@ -1,0 +1,138 @@
+\chapter{\textbf{Data Warehouse}}
+
+Segundo Silberschatz e Korth \cite{Silber}: “As consultas ao banco de dados normalmente 
+são projetadas para extrair informações específicas, como saldo de um conta ou a soma
+dos saldos de conta de um cliente. Porém, consultas projetadas para ajudar a 
+formular um estratégia corporativa normalmente exigem a agregação em uma escala
+muito maior, e incluem análise estatística não expressa facilmente com os 
+recursos da SQL que já vimos anteriormente. Essas cosultas normalmente precisam 
+acessar dados vindos de várias origens.”
+
+Um DW é um repositório de dados oriundos de várias origens e armazenados sob um
+banco de dados comum e que, normalmente, será mantido por um longo período de
+tempo, permitindo acesso a dados históricos. Diferente dos bancos de dados
+transacionais, o DW têm a característica distinta direcionada principalmente ao
+suporte para tomada de decisões, segundo Navathe\cite{Navathe}. Os dados armazenados no
+DW são submetidos a análises e agregações complexas, por isso, ele é um banco de
+dados direcionado a consultas e análise de dados. Também é possível utilizar
+técnicas para descobrir regras e padrões a partir dos dados, facilitando, assim,
+a tomada de decisão. As informações são de alto nível obtidas a partir de dados
+detalhados armazenados nele.
+
+A modelagem de dados dos DW é baseada em modelos multidimensionais que 
+aproveitam informações dos dados para visualização em estruturas denominadas
+cubos, os cubos também são conhecidos como matrizes multidimensionais, na
+representação em matrizes o desempenho pode ser muito melhor do que em modelos
+relacionais, além de facilitar no processamento analítico on-line (OLAP – online
+analytical processing) e na visualização dos dados.
+
+Nesse modelo multidimensional são definidas tabelas de dimensão e tabelas fatos,
+as tabelas de dimensão armazenam dados não voláteis, isto é, dados que não são
+alterados frequentemente com o tempo, já as tabelas fatos armazenam dados
+voláteis que são alterados constantemente e estão relacionadas as tabelas de
+dimensão.
+
+No DW os dados são extraídos de vários bancos de dados e podem estar em 
+esquemas diferentes. É parte da tarefa dele agrupar toda a informação em um
+único esquema.
+
+Existem diferentes formas de manter um DW atualizado. No modelo mais
+comum, a coleta de dados é orientada pela fonte, as fontes transmitem os novos 
+dados. Segundo Ramakrishnan \cite{Rama} essa transmissão de dados é estipulada para
+ocorrer de forma contínua para manter o repositório mais atualizado possível em
+relação as suas diversas fontes. Uma outra forma possível é que a coleta dos
+dados seja orientada pelo DW. Nesse modelo é enviada uma requisição as fontes
+sempre que seja necessário atualizar a base central. Ramakrishnan \cite{Rama}
+menciona que outra forma é a de reconstrução total da base do DW periodicamente.
+Apesar de ser uma abordagem mais simples, ela não é eficiente, pois deve tratar
+de grandes quantidades de dados todas as vezes em que a reconstrução for realizada.
+
+Vale observar que em nenhuma das abordagens a base central de dados estará 
+sempre atualizada em relação as todas as suas fontes. Uma forma de contornar esse
+problema é a atualização em duas fases, onde as modificações feitas nas bases 
+são então replicadas no DW. Mas essa abordagem torna todo o processo
+muito caro em termos computacionais, segundo Ramakrishnan \cite{Rama}.
+
+Em geral essa pequena desatualização não significa um problema para os sistemas
+de suporte a decisão.
+
+\section{\textbf{Data Mart}}
+
+Data Mart (DM) é um subconjunto de dados do DW. O conjunto de DM agrupa dados
+específicos de um determinado assunto ou sumariza os dados para uma determinada
+finalidade, ou seja, consiste em criar dentro do DW um conjunto de dados
+agregados ou sumarizados com diversos objetivos, mas principalmente em
+facilitar a mineração de dados, focando na agregação para melhorar o desempenho
+das consultas mais comuns ou frequentes.
+
+Segundo Navathe \cite{Navathe}, para fazer a análise de dados mais eficiente,
+o DW deve ter uma coleção de dados agregados ou sumarizados. 
+
+No ProInfoData foram definidos gráficos e relatórios para o MEC e a sociedade
+consultarem no portal do projeto, com base nessas consultas foram criados DMs
+específicos para atender essa demanda, como veremos a seguir.
+
+\section{\textbf{Arquiterura do Banco de Dados no ProInfoData}}
+
+No BD do ProInfoData existem três etapas essenciais que podemos chamar de
+grandes transações: carregamento, armazenamento e leitura de dados. O
+carregamento consiste em receber e consolidar os dados no DW, o armazenamento é
+o próprio histórico de dados do DW e a etapa de leitura organiza os dados para
+otimizar as consultas. Essas etapas são implementadas em três componentes:
+staging area, DW e Data Marts.
+
+A staging area é uma tabela de armazenamento temporário, ela é responsável por
+receber os dados dos clientes sem nenhuma manipulação, esses dados são inseridos
+pelo servidor webservice, eles são armazenados temporariamente e após o
+carregamento da staging area, são extraídos, transformados e consolidados no DW,
+então são retirados da staging area. Com os dados armazenados no DW, eles,
+finalmente, são sumarizados e agregados no conjundo de DM que foi projetado para
+otimizar as consultas.
+
+O DW do ProInfoData é composto por tabelas de dimensão que armazenam dados com
+pouca atualização, foram criadas para armazenar informações das escolas, máquinas
+e catálogo de hardware. Também é composto por tabelas fatos que são atualizadas
+diariamente, essas tabelas armazenam informações de disponibilidade, inventário
+de hardware e consumo de banda de rede.
+
+O conjunto de DM é formado por quatro Data Marts: um DM para classificar a
+disponibilidade das máquinas por cores. Outro DM agrupa por escola a
+disponibilidade das máquinas. Existe outro para agregar informações de hardware
+e um para detectar alteração de hardware.
+
+%\textbf{Talvez inserir uma imagem da arquitetura do BD????}\\
+
+Cada componente descrito têm sua complexidade de arquitetura, carregamento e
+armazenamento. Por isso, em todos esses componentes foram realizados testes de
+desempenho, utilizando uma metodologia baseada em um modelo incremental de
+hardware e software. O objetivo é avaliar o sistema partindo de um ambiente
+menos complexo para o mais complexo, usando cargas intermediárias até o ponto
+limite do sistema. Com isso, além de encontrar a carga máxima que o sistema
+suporta, fornece também resultados parciais que facilitam a avaliação de
+estresse de hardware. Os testes de escrita no BD mostraram que a arquitetura
+proposta chega a atender 334 transações por segundo. Já os testes de consulta
+alcançou o número de 142 transações por segundo. Com estes resultados, a
+arquitetura mostrou-se eficiente, atendendo as conexões e as consultas de dados
+esperadas.
+
+Entretanto, um ponto crucial do BD não entrou nessa bateria de testes que é o
+carregamento dos dados para o DW e depois a agregação dos dados no conjunto de
+DM. O carregamento é considerado crucial porque foi determinado um período máximo
+para executá-lo que é de oito horas (entre 00h:00m até 8h:00m) porque nesse horário
+o número de consultas é relativamente menor e consequentemente o impacto no BD é
+menor. Além disso, os dados tem um delay de um dia, ou seja, os dados no DW são
+sempre atualizados do dia anterior e não do dia atual. 
+
+O carregamento é realizado por funções de carregamento executadas no SGBD,
+realizam as junções, sumarizações e agregações necessárias. Essa etapa não
+entrou nos testes porque depende dos dados já inseridos no BD, como a cada dia
+são inseridos mais dados, o carregamento tende a demorar mais e, assim, aumenta
+gradualmente o tempo de execução conforme cresce o volume de dados.
+
+O desempenho das funções de carregamento depende da quantidade de dados armazenados
+no BD, o volume de dados cresce diariamente, por isso, não é difícil de perceber
+que o carregamento chegará ao ponto de demorar mais de oito horas para finalizar,
+ocasionando maior demora na realização de consultas no BD.
+
+Por isso, torna-se necessário usar novas tecnologias para resolver esse tipo
+problema.

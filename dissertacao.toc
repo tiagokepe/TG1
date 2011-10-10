@@ -1,0 +1,13 @@
+\select@language {brazil}
+\contentsline {chapter}{\MakeUppercase {Resumo}}{ii}
+\contentsline {chapter}{\MakeUppercase {Abstract}}{iii}
+\contentsline {chapter}{\numberline {1}\MakeUppercase {\textbf {Introdu\IeC {\c c}\IeC {\~a}o}}}{1}
+\contentsline {chapter}{\numberline {2}\MakeUppercase {\textbf {Data Warehouse}}}{3}
+\contentsline {section}{\numberline {2.1}\textbf {Data Mart}}{4}
+\contentsline {section}{\numberline {2.2}\textbf {Arquiterura do Banco de Dados no ProInfoData}}{5}
+\contentsline {chapter}{\numberline {3}\MakeUppercase {\textbf {MapReduce}}}{7}
+\contentsline {section}{\numberline {3.1}\textbf {Hadoop}}{9}
+\contentsline {section}{\numberline {3.2}\textbf {Hive}}{9}
+\contentsline {chapter}{\numberline {4}\MakeUppercase {\textbf {Proposta de migra\IeC {\c c}\IeC {\~a}o de Data Warehouse para um modelo de armazenamento chave-valor}}}{11}
+\contentsline {chapter}{\numberline {5}\MakeUppercase {\textbf {Discuss\IeC {\~a}o}}}{19}
+\contentsline {chapter}{\MakeUppercase {Bibliografia}}{21}

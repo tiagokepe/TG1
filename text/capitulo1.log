@@ -1,0 +1,143 @@
+This is TeX, Version 3.1415926 (TeX Live 2009/Debian) (format=tex 2011.7.4)  3 OCT 2011 22:14
+**capitulo1.tex
+(./capitulo1.tex
+! Undefined control sequence.
+l.1 \chapter
+            {\textbf{Introdu^^c3^^a7^^c3^^a3o}}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.1 \chapter{\textbf
+                    {Introdu^^c3^^a7^^c3^^a3o}}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a7 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a3 in font cmr10!
+! Undefined control sequence.
+l.2 \label
+          {Introducao}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^ba in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a1 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^aa in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a9 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a1 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^ba in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a1 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a7 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^b5 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a9 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a7 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^b5 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^ad in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a7 in font cmr10!
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^b5 in font cmr10!
+! Undefined control sequence.
+l.15 ...tetura pode ser visualizada na figura \ref
+                                                  {arquiteturaBD}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.16 seguir:\newline
+                    
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.18 \begin
+           {figure}[ht]
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Undefined control sequence.
+l.20   \includegraphics
+                       [width=200px,height=150px]{img/arq-bd.png}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   [
+l.20   \includegraphics[
+                        width=200px,height=150px]{img/arq-bd.png}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+! Illegal unit of measure (pt inserted).
+<to be read again> 
+                   [
+l.20   \includegraphics[
+                        width=200px,height=150px]{img/arq-bd.png}
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+! Undefined control sequence.
+l.21   \caption
+               {Vis^^c3^^a3o geral da Arquitetura do ProInfoData}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no ^^c3 in font cmr10!
+Missing character: There is no ^^a3 in font cmr10!
+! Undefined control sequence.
+l.22   \label
+             {arquiteturaBD}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[1] )
+Output written on capitulo1.dvi (1 page, 1504 bytes).
