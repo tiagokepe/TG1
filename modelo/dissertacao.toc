@@ -1,6 +1,0 @@
-\select@language {brazil}
-\contentsline {chapter}{\MakeUppercase {Resumo}}{ii}
-\contentsline {chapter}{\MakeUppercase {Abstract}}{iii}
-\contentsline {chapter}{\numberline {1}\MakeUppercase {Introdu\c {c}\~ao}}{1}
-\contentsline {section}{\numberline {1.1}Novo}{1}
-\contentsline {chapter}{\MakeUppercase {Bibliografia}}{4}
